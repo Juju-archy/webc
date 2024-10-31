@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>Connect to PHPMyAdmin</title>
+
+
+        <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-192x192.png" sizes="192x192" />
+        <link rel="stylesheet" href="https://components.clever-cloud.com/styles.css?version=9.0.0">
+        <script type="module" src="node_modules/@clevercloud/components/dist/cc-notice.js"></script>
+
+        <style>
+            body
+            {
+                margin-top: 10vh;
+                margin-bottom: 10vh;
+                background-color: lightgray;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+            tr
+            {
+                border:none;
+                
+            }
+            table
+            {
+                width:100%;
+            }
+            input
+            {
+                width: 100%;
+            }
+            td
+            {
+                padding:5px;
+                text-align: right;
+                font-weight: bold;
+                vertical-align:baseline;
+            }
+            div
+            {
+                background-color: white; 
+                margin-left: 22vw;
+                margin-right: 22vw;
+                font-size:14px;
+                border-radius:10px;
+                min-width:fit-content;
+               padding: 50px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+          <img src="https://www.clever-cloud.com/app/themes/Starter/assets/img/brand-assets/logo_on_white.svg" style="width:10vw;"/>
+          <h1 style="text-align: center;">Connect to PHPMyAdmin</h1>
+
+          <form method="post" action="https://pma-mysql-addon-clevercloud-customers.services.clever-cloud.com/clever.php">
+            <table>
+                <cc-input-text inline="" multi="" type="text">
+                  <label>Host</label>
+                  <input type="text" name="host">
+                </cc-input-text>
+                <cc-input-text inline="" multi="" type="text">
+                  <label>Port</label>
+                  <input type="text" name="port">
+                </cc-input-text>
+                <cc-input-text inline="" multi="" type="text">
+                  <label>User</label>
+                  <input type="text" name="user">
+                </cc-input-text>
+                <cc-input-text secret="" type="text">
+                  <label>Password</label>
+                  <input id="input-id" class="input" spellcheck="false" type="password" name="password">
+                </cc-input-text>
+                
+                <cc-button>
+                    <input style="width:auto;min-width:25%;" type="submit" value="Connect"/>
+                </cc-button>
+            </table>
+        </form>
+    </div>
+    <p style="text-align: center;"><em>Feel free to contact us if needed<br/><a href="mailto:support@clever-cloud.com">support@clever-cloud.com</a></em></p>
+    </body>
+</html>
+
