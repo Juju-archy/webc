@@ -1,88 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        
-        <title>Connect to PHPMyAdmin</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Connect to PHPMyAdmin</title>
+    <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-192x192.png" sizes="192x192" />
+    <link rel="stylesheet" href="https://components.clever-cloud.com/styles.css?version=9.0.0">
+    <script type="module" src="node_modules/@clevercloud/components/dist/cc-notice.js"></script>
 
+    <style>
+        body {
+            margin-top: 10vh;
+            margin-bottom: 10vh;
+            background-color: lightgray;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table {
+            width: 100%;
+        }
+        input{
+            width: 100%;
+            margin-top: 0.2vw;
+            margin-bottom: 0.5vw;
+        }
+        label {
+            padding: 0.5vw;
+            text-align: right;
+            font-weight: bold;
+            vertical-align: baseline;
+        }
+        .formpma {
+            background-color: white; 
+            margin-left: 27vw;
+            margin-right: 27vw;
+            font-size: 14px;
+            border-radius: 10px;
+            min-width: fit-content;
+            padding: 3vw;
+        }
+        .wrapper {
+            display: grid;
+            flex: 1 1 0px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0.15em 0.5em;
+        }
+        .btn-img {
+            --cc-icon-color: var(--cc-input-btn-icons-color, #595959);
+            box-sizing: border-box;
+            padding: 15%;
+        }
+        :host([size="lg"]) {
+            --size: var(--cc-icon-size, 1.5em);
+        }
+        cc-input-text{
+            --cc-input-text-input-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="formpma">
+        <img src="https://www.clever-cloud.com/app/themes/Starter/assets/img/brand-assets/logo_on_white.svg" style="width:10vw;"/>
+        <h1 style="text-align: center;">Connect to PHPMyAdmin</h1>
 
-        <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" href="https://cdn.clever-cloud.com/uploads/2023/03/cropped-cropped-favicon-192x192.png" sizes="192x192" />
-        <link rel="stylesheet" href="https://components.clever-cloud.com/styles.css?version=9.0.0">
-        <script type="module" src="node_modules/@clevercloud/components/dist/cc-notice.js"></script>
-
-        <style>
-            body
-            {
-                margin-top: 10vh;
-                margin-bottom: 10vh;
-                background-color: lightgray;
-                font-family:Arial, Helvetica, sans-serif;
-            }
-            tr
-            {
-                border:none;
-                
-            }
-            table
-            {
-                width:100%;
-            }
-            input
-            {
-                width: 100%;
-            }
-            td
-            {
-                padding:5px;
-                text-align: right;
-                font-weight: bold;
-                vertical-align:baseline;
-            }
-            div
-            {
-                background-color: white; 
-                margin-left: 22vw;
-                margin-right: 22vw;
-                font-size:14px;
-                border-radius:10px;
-                min-width:fit-content;
-               padding: 50px;
-            }
-        </style>
-
-    </head>
-    <body>
-        <div>
-          <img src="https://www.clever-cloud.com/app/themes/Starter/assets/img/brand-assets/logo_on_white.svg" style="width:10vw;"/>
-          <h1 style="text-align: center;">Connect to PHPMyAdmin</h1>
-
-          <form method="post" action="https://pma-mysql-addon-clevercloud-customers.services.clever-cloud.com/clever.php">
-            <table>
-                <cc-input-text inline="" multi="" type="text">
-                  <label>Host</label>
-                  <input type="text" name="host">
-                </cc-input-text>
-                <cc-input-text inline="" multi="" type="text">
-                  <label>Port</label>
-                  <input type="text" name="port">
-                </cc-input-text>
-                <cc-input-text inline="" multi="" type="text">
-                  <label>User</label>
-                  <input type="text" name="user">
-                </cc-input-text>
-                <cc-input-text secret="" type="text">
-                  <label>Password</label>
-                  <input id="input-id" class="input" spellcheck="false" type="password" name="password">
-                </cc-input-text>
-                
-                <cc-button>
-                    <input style="width:auto;min-width:25%;" type="submit" value="Connect"/>
-                </cc-button>
-            </table>
+        <form method="post" action="https://pma-mysql-addon-clevercloud-customers.services.clever-cloud.com/clever.php">
+            <cc-input-text label="Host" required="true" type="text" inline="false">
+                <label>Host</label>
+                <input type="text" name="host" placeholder="Host">
+            </cc-input-text>
+            <cc-input-text label="Port" required="true" type="text" inline="false">
+                <label>Port</label>
+                <input type="text" name="port" placeholder="Port">
+            </cc-input-text>
+            <cc-input-text label="User" required="true" type="text" inline="false">
+                <label>User</label>
+                <input type="text" name="user" placeholder="User">
+            </cc-input-text>
+            <cc-input-text secret="true" label="Password" required="true" inline="false">
+                <label>Password</label>
+                <div class="meta-input" style="position: relative;">
+                    <input id="password-input" class="input" spellcheck="false" type="password" name="password" style="width: calc(100% - 15%); padding-right: 15%;">
+                    <button type="button" id="toggle-password" aria-label="Toggle password visibility" style="background: none; border: none; cursor: pointer; position: absolute; right: 1%; top:0%; transform: translateY(0%);">
+                        <cc-icon class="btn-img" size="md" a11y-name="Display password">
+                            <svg id="icon-eye" viewBox="0 0 22 22" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em">
+                                <path id="eye-icon" d="M17.883 19.297A10.949 10.949 0 0112 21c-5.392 0-9.878-3.88-10.818-9A10.982 10.982 0 014.52 5.935L1.394 2.808l1.414-1.414 19.799 19.798-1.414 1.415-3.31-3.31zM5.936 7.35A8.965 8.965 0 003.223 12a9.005 9.005 0 0013.201 5.838l-2.028-2.028A4.5 4.5 0 018.19 9.604L5.936 7.35zm6.978 6.978l-3.242-3.241a2.5 2.5 0 003.241 3.241zm7.893 2.265l-1.431-1.431A8.935 8.935 0 0020.778 12 9.005 9.005 0 009.552 5.338L7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.947 10.947 0 01-2.012 4.593zm-9.084-9.084a4.5 4.5 0 014.769 4.769l-4.77-4.77z"></path>
+                            </svg>
+                        </cc-icon>
+                    </button>
+                </div>
+            </cc-input-text>
+            <cc-button>
+                <input style="width:auto;min-width:25%;" type="submit" value="Connect"/>
+            </cc-button>   
         </form>
     </div>
     <p style="text-align: center;"><em>Feel free to contact us if needed<br/><a href="mailto:support@clever-cloud.com">support@clever-cloud.com</a></em></p>
-    </body>
-</html>
 
+    <script>
+        document.getElementById('toggle-password').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password-input');
+            const eyeIcon = document.getElementById('eye-icon');
+            // Toggle password visibility
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                // Switch to SVG for "show"
+                eyeIcon.setAttribute('d', 'M12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.818-9C2.122 6.88 6.608 3 12 3zm0 16a9.005 9.005 0 008.778-7 9.005 9.005 0 00-17.555 0A9.005 9.005 0 0012 19zm0-2.5a4.5 4.5 0 110-9 4.5 4.5 0 010 9zm0-2a2.5 2.5 0 100-5 2.5 2.5 0 000 5z');
+            } else {
+                passwordInput.type = 'password';
+                // Switch back to SVG for "hide"
+                eyeIcon.setAttribute('d', 'M17.883 19.297A10.949 10.949 0 0112 21c-5.392 0-9.878-3.88-10.818-9A10.982 10.982 0 014.52 5.935L1.394 2.808l1.414-1.414 19.799 19.798-1.414 1.415-3.31-3.31zM5.936 7.35A8.965 8.965 0 003.223 12a9.005 9.005 0 0013.201 5.838l-2.028-2.028A4.5 4.5 0 018.19 9.604L5.936 7.35zm6.978 6.978l-3.242-3.241a2.5 2.5 0 003.241 3.241zm7.893 2.265l-1.431-1.431A8.935 8.935 0 0020.778 12 9.005 9.005 0 009.552 5.338L7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.947 10.947 0 01-2.012 4.593zm-9.084-9.084a4.5 4.5 0 014.769 4.769l-4.77-4.77z');
+            }
+        });
+    </script>
+</body>
+</html>
